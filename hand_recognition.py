@@ -94,7 +94,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
             ret, frame = cap.read()
             #open camera, read frame into numpy array, changing rgb to bgr and back bc openCV and mediapipe use opposites
             frame = cv.flip(frame,1)
-            image = cv.cvtColor(frame,cv.COLOR_BGR2RGB)
+            image = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
             mp_image = mp.Image(mp.ImageFormat.SRGB, image)
             #monotonically increasing timestamp
  #           print(mp.Timestamp.is_allowed_in_stream(int(time.time()*1000)))
@@ -106,7 +106,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
                 print("Hand detection failed. Skipping frame.")
                 continue
             image = cv.cvtColor(image,cv.COLOR_RGB2BGR)
-            rgb_image = np.array(image)
+            rgb_image = image
             annotated_image = lm_visualizer.draw_landmarks_on_image(rgb_image, detected_image)
 
             cv.imshow('Webcam', annotated_image)
