@@ -1,0 +1,6 @@
+mediapipe
+
+mediapipe-model-maker
+
+tensorflow
+
